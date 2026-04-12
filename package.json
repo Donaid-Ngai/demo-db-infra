@@ -1,0 +1,10 @@
+{
+  "name": "demo-db-infra",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "check": "echo 'Add SQL lint/validation here'",
+    "types:generate": "bash scripts/generate-types.sh",
+    "migrate:plan": "echo 'Add migration planning here'"
+  }
+}

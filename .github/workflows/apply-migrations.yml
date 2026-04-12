@@ -1,0 +1,44 @@
+name: Apply Demo DB Migrations
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Supabase CLI
+        run: npm install -g supabase
+
+      - name: Apply migrations
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+        run: ./scripts/apply-migrations.sh
+
+      - name: Generate types
+        env:
+          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+        run: ./scripts/generate-types.sh
+
+      - name: Commit generated artifacts
+        run: |
+          git config user.name "Cody Bot"
+          git config user.email "cody-bot@example.com"
+          git add generated/types
+          git diff --cached --quiet || git commit -m "chore: refresh generated db types"
+          git push
