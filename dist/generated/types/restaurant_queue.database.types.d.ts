@@ -5,6 +5,58 @@ export type Database = {
     __InternalSupabase: {
         PostgrestVersion: "14.5";
     };
+    public: {
+        Tables: {
+            [_ in never]: never;
+        };
+        Views: {
+            queue_entries: {
+                Row: {
+                    id: string | null;
+                    joined_at: string | null;
+                    name: string | null;
+                    note: string | null;
+                    party_size: number | null;
+                    phone: string | null;
+                    source: string | null;
+                    status: string | null;
+                    updated_at: string | null;
+                };
+                Insert: {
+                    id?: string | null;
+                    joined_at?: string | null;
+                    name?: string | null;
+                    note?: string | null;
+                    party_size?: number | null;
+                    phone?: string | null;
+                    source?: string | null;
+                    status?: string | null;
+                    updated_at?: string | null;
+                };
+                Update: {
+                    id?: string | null;
+                    joined_at?: string | null;
+                    name?: string | null;
+                    note?: string | null;
+                    party_size?: number | null;
+                    phone?: string | null;
+                    source?: string | null;
+                    status?: string | null;
+                    updated_at?: string | null;
+                };
+                Relationships: [];
+            };
+        };
+        Functions: {
+            [_ in never]: never;
+        };
+        Enums: {
+            [_ in never]: never;
+        };
+        CompositeTypes: {
+            [_ in never]: never;
+        };
+    };
     restaurant_queue: {
         Tables: {
             queue_entries: {
@@ -108,6 +160,9 @@ export type CompositeTypes<PublicCompositeTypeNameOrOptions extends keyof Defaul
     schema: keyof DatabaseWithoutInternals;
 } ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName] : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"] ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions] : never;
 export declare const Constants: {
+    readonly public: {
+        readonly Enums: {};
+    };
     readonly restaurant_queue: {
         readonly Enums: {};
     };

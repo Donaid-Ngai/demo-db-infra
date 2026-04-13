@@ -12,6 +12,58 @@ export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.5"
   }
+  public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      queue_entries: {
+        Row: {
+          id: string | null
+          joined_at: string | null
+          name: string | null
+          note: string | null
+          party_size: number | null
+          phone: string | null
+          source: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string | null
+          joined_at?: string | null
+          name?: string | null
+          note?: string | null
+          party_size?: number | null
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string | null
+          joined_at?: string | null
+          name?: string | null
+          note?: string | null
+          party_size?: number | null
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   restaurant_queue: {
     Tables: {
       queue_entries: {
@@ -184,6 +236,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
+  public: {
+    Enums: {},
+  },
   restaurant_queue: {
     Enums: {},
   },
