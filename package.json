@@ -1,10 +1,26 @@
 {
-  "name": "demo-db-infra",
+  "name": "@donaid/demo-db-types",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "main": "./dist/src/index.d.ts",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "check": "echo 'Add SQL lint/validation here'",
     "types:generate": "bash scripts/generate-types.sh",
+    "types:build": "tsc -p tsconfig.json",
     "migrate:plan": "echo 'Add migration planning here'"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }
